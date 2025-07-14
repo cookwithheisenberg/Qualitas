@@ -14,7 +14,6 @@ interface TimelineProps {
 }
 
 export function Timeline({ items }: TimelineProps) {
-  const [activeIndex, setActiveIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -25,14 +24,6 @@ export function Timeline({ items }: TimelineProps) {
     const baseDelay = 0.2;
     return `${index * baseDelay}s`;
   };
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % items.length);
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, [items.length, getCardPosition]);
 
   return (
     <div className="relative">

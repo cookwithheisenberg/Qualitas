@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { Card } from "@/components/ui/card";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 export default function Borrowers() {
   const [selectedState, setSelectedState] = useState<string>("All");

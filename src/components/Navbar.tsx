@@ -44,15 +44,13 @@ const FUNDS_MENU = [
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [fundsMenuOpen, setFundsMenuOpen] = useState(false);
-  let fundsMenuCloseTimeout: NodeJS.Timeout | null = null;
   const [mobileFundsOpen, setMobileFundsOpen] = useState(false);
 
   const openFundsMenu = () => {
-    if (fundsMenuCloseTimeout) clearTimeout(fundsMenuCloseTimeout);
     setFundsMenuOpen(true);
   };
   const closeFundsMenu = () => {
-    fundsMenuCloseTimeout = setTimeout(() => setFundsMenuOpen(false), 150);
+    setFundsMenuOpen(false);
   };
 
   return (
