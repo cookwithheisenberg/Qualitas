@@ -201,7 +201,7 @@ export default function CaseStudyDetail({ params }: { params: Promise<{ slug: st
                 </button>
                 {/* Dots indicator */}
                 <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
-                  {caseStudy.carouselImages.map((_, index) => (
+                  {caseStudy.carouselImages.map((image: string, index: number) => (
                     <button
                       key={index}
                       onClick={() => setCurrentImageIndex(index)}
