@@ -1,5 +1,4 @@
 "use client";
-import { useState, useEffect } from "react";
 import { Card } from "@/components/ui/card";
 
 interface TimelineItem {
@@ -14,12 +13,6 @@ interface TimelineProps {
 }
 
 export function Timeline({ items }: TimelineProps) {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    setIsVisible(true);
-  }, []);
-
   const getCardPosition = (index: number) => {
     const baseDelay = 0.2;
     return `${index * baseDelay}s`;
@@ -34,9 +27,7 @@ export function Timeline({ items }: TimelineProps) {
         {items.map((item, index) => (
           <div
             key={index}
-            className={`relative flex flex-col md:flex-row items-start gap-6 md:gap-12 transition-all duration-700 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}
+            className={`relative flex flex-col md:flex-row items-start gap-6 md:gap-12 transition-all duration-700 opacity-100 translate-y-0`}
             style={{ transitionDelay: getCardPosition(index) }}
           >
             {/* Timeline dot */}

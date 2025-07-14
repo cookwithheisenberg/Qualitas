@@ -1,11 +1,8 @@
 "use client";
 
-import { useState } from "react";
 import { Card } from "@/components/ui/card";
 
 export default function Borrowers() {
-  const [selectedState, setSelectedState] = useState<string>("All");
-
   // Available images from public folder
   const availableImages = [
     "/placeholder.avif",
@@ -125,9 +122,7 @@ export default function Borrowers() {
   ];
 
   // Filter team members by state
-  const filteredTeamMembers = selectedState === "All" 
-    ? teamMembers 
-    : teamMembers.filter(member => member.state === selectedState);
+  const filteredTeamMembers = teamMembers;
 
   return (
     <main className="w-full min-h-screen bg-white">

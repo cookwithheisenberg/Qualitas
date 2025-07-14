@@ -1,12 +1,6 @@
 "use client";
 
 export default function OurTeam() {
-  // Unsplash royalty-free portrait images for prototyping
-  const localImages = [
-    "/person 1.jpg",
-    "/person 2.jpg",
-    "/person 3.jpg",
-  ];
   return (
     <main className="w-full min-h-screen" style={{ backgroundColor: '#CCD0DA' }}>
       {/* Hero Row */}
@@ -36,7 +30,7 @@ export default function OurTeam() {
           <TeamMemberCard
             name="Manager 1"
             title="Managing Director"
-            image={localImages[0 % localImages.length]}
+            image="/person 1.jpg"
             description="Manager 1 leads our investment strategy and team culture."
             linkedin="#"
           />
@@ -44,7 +38,7 @@ export default function OurTeam() {
           <TeamMemberCard
             name="Manager 2"
             title="Managing Director"
-            image={localImages[1 % localImages.length]}
+            image="/person 2.jpg"
             description="Manager 2 drives operational excellence and innovation."
             linkedin="#"
           />
@@ -52,7 +46,7 @@ export default function OurTeam() {
           <TeamMemberCard
             name="Manager 3"
             title="Non-Executive Director"
-            image={localImages[2 % localImages.length]}
+            image="/person 3.jpg"
             description="Manager 3 brings global perspective and governance expertise."
             linkedin="#"
           />
@@ -60,7 +54,7 @@ export default function OurTeam() {
           <TeamMemberCard
             name="Manager 4"
             title="Non-Executive Director"
-            image={localImages[0 % localImages.length]}
+            image="/person 1.jpg"
             description="Manager 4 ensures strategic growth and compliance."
             linkedin="#"
           />
@@ -68,7 +62,7 @@ export default function OurTeam() {
           <TeamMemberCard
             name="Manager 5"
             title="Chairman"
-            image={localImages[1 % localImages.length]}
+            image="/person 2.jpg"
             description="Manager 5 provides leadership and vision for the board."
             linkedin="#"
           />
@@ -89,7 +83,7 @@ export default function OurTeam() {
           <TeamMemberCard
             name="Team Member 1"
             title="Portfolio Manager"
-            image={localImages[0 % localImages.length]}
+            image="/person 1.jpg"
             description="Team Member 1 specializes in portfolio management and client relations."
             linkedin="#"
           />
@@ -97,7 +91,7 @@ export default function OurTeam() {
           <TeamMemberCard
             name="Team Member 2"
             title="Senior Analyst"
-            image={localImages[1 % localImages.length]}
+            image="/person 2.jpg"
             description="Team Member 2 provides deep analytical insights and supports investment decisions."
             linkedin="#"
           />
@@ -105,7 +99,7 @@ export default function OurTeam() {
           <TeamMemberCard
             name="Team Member 3"
             title="Associate"
-            image={localImages[2 % localImages.length]}
+            image="/person 3.jpg"
             description="Team Member 3 supports the team with research and analysis."
             linkedin="#"
           />
@@ -113,7 +107,7 @@ export default function OurTeam() {
           <TeamMemberCard
             name="Team Member 4"
             title="Investment Manager"
-            image={localImages[0 % localImages.length]}
+            image="/person 1.jpg"
             description="Team Member 4 manages client portfolios and relationships."
             linkedin="#"
           />
@@ -121,7 +115,7 @@ export default function OurTeam() {
           <TeamMemberCard
             name="Team Member 5"
             title="Analyst"
-            image={localImages[1 % localImages.length]}
+            image="/person 2.jpg"
             description="Team Member 5 delivers data-driven insights for investment decisions."
             linkedin="#"
           />

@@ -1,11 +1,8 @@
 "use client";
 
-import { useState } from "react";
 import { getCaseStudiesByCategory, getRecentCaseStudies } from "@/lib/caseStudies";
 
 export default function NewsInsights() {
-  const [selectedFilter, setSelectedFilter] = useState<string>("All");
-
   // Get case studies by category
   const mostRecentCards = getRecentCaseStudies(4);
   const qualitasNewsCards = getCaseStudiesByCategory("News").slice(0, 4);
@@ -38,25 +35,6 @@ export default function NewsInsights() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {mostRecentCards.map((card) => (
             <InsightCard key={card.id} {...card} />
-          ))}
-        </div>
-      </section>
-
-      {/* Content Type Filters */}
-      <section className="w-full max-w-screen-2xl mx-auto mt-12 md:mt-16 pb-4 md:pb-6 px-4 md:px-8">
-        <div className="flex flex-wrap items-center gap-3">
-          {["All", "White Papers", "News", "Insights", "Research", "Videos", "Podcasts"].map((filter) => (
-            <button
-              key={filter}
-              onClick={() => setSelectedFilter(filter)}
-              className={`px-6 py-3 rounded-lg text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
-                selectedFilter === filter
-                  ? "bg-primary text-white shadow-md"
-                  : "bg-white text-primary border border-primary/30 hover:bg-primary/5 hover:border-primary/50"
-              }`}
-            >
-              {filter}
-            </button>
           ))}
         </div>
       </section>
