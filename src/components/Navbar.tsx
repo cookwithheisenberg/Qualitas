@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { FundsMegaMenu } from "@/components/FundsMegaMenu";
+import Link from "next/link";
 
 const NAV_LINKS = [
   { label: "Funds", href: "#" },
@@ -57,7 +58,10 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-30 w-full bg-primary border-b border-border/60">
       <nav className="max-w-screen-2xl mx-auto flex items-center justify-between h-16 px-4 sm:px-8 relative">
-        <a href="/" className="font-bold text-xl tracking-wide text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent transition-colors">QUALITAS</a>
+        {/* Logo */}
+        <Link href="/" className="font-bold text-xl tracking-wide text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent transition-colors">
+          QUALITAS
+        </Link>
         {/* Desktop Nav */}
         <ul className="hidden md:flex gap-8 items-center relative">
           {NAV_LINKS.map((link) => (

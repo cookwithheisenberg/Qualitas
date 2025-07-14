@@ -1,66 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { HeroParallax } from "@/components/HeroParallax";
 import { Parallax } from "react-scroll-parallax";
-import { FundsMegaMenu } from "@/components/FundsMegaMenu";
-import { useRef } from "react";
 import { getRecentCaseStudies } from "@/lib/caseStudies";
 
-const NAV_LINKS = [
-  { label: "Funds", href: "#" },
-  { label: "Borrowers", href: "#" },
-  { label: "News & Insights", href: "#" },
-  { label: "Investor Centre", href: "#" },
-  { label: "About", href: "/about" },
-  { label: "Contact", href: "#" },
-];
-
-const FUNDS_MENU = [
-  {
-    label: "Private Equity",
-    items: [
-      "Qualitas Food Infrastructure Equity Fund",
-      "Qualitas Real Estate Opportunity Fund 1",
-      "Qualitas Real Estate Opportunity Fund 2",
-    ],
-  },
-  {
-    label: "Private Credit",
-    items: [
-      "Qualitas Private Credit Income Fund",
-      "Qualitas Tactical Credit Fund",
-      "Qualitas Senior Debt Fund",
-      "Qualitas Construction Debt Fund",
-      "Qualitas Low Carbon Debt Fund",
-    ],
-  },
-  {
-    label: "Listed Funds",
-    items: [],
-  },
-  {
-    label: "Qualitas Select",
-    items: [],
-  },
-];
-
 export default function Home() {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [fundsMenuOpen, setFundsMenuOpen] = useState(false);
-  let fundsMenuCloseTimeout: NodeJS.Timeout | null = null;
-  const [mobileFundsOpen, setMobileFundsOpen] = useState(false);
-
-  const openFundsMenu = () => {
-    if (fundsMenuCloseTimeout) clearTimeout(fundsMenuCloseTimeout);
-    setFundsMenuOpen(true);
-  };
-  const closeFundsMenu = () => {
-    fundsMenuCloseTimeout = setTimeout(() => setFundsMenuOpen(false), 150);
-  };
-
   return (
     <div className="min-h-screen flex flex-col bg-white overflow-x-hidden">
       {/* Hero Section */}
@@ -91,43 +38,23 @@ export default function Home() {
             <span className="body-sm text-white/80 mt-1">Extensive global institutional<br/>and wholesale investor base</span>
           </Card>
           {/* 77% Card */}
-          <Card className="flex flex-col justify-start bg-[#7C8496] rounded-xl border-0 p-6 min-h-[140px] shadow-sm">
+          <Card className="flex flex-col justify-start bg-[#E6B96A] rounded-xl border-0 p-6 min-h-[140px] shadow-sm">
             <span className="text-4xl font-light text-white mb-2">77%</span>
-            <span className="body-md text-white/90 font-medium">Allocation to residential</span>
-            <span className="body-sm text-white/80 mt-1">Driven by robust<br/>investment fundamentals</span>
+            <span className="body-md text-white/90 font-medium">Return of capital to investors</span>
+            <span className="body-sm text-white/80 mt-1">Proven track record of<br/>successful capital returns</span>
           </Card>
-          {/* $27bn + 48/264 Screenshot-accurate Card */}
-          <Card className="relative flex flex-row items-center bg-primary rounded-xl border-0 p-8 min-h-[220px] shadow-sm overflow-visible col-span-1 md:col-span-2">
-            {/* Left: $27bn */}
-            <div className="flex flex-col justify-center items-start flex-1 min-w-[220px] h-full">
-              <span className="text-5xl font-light text-white mb-2">$27bn</span>
-              <span className="text-xl text-white/90 font-medium">Total value of investments</span>
-            </div>
-            {/* Center: Pill/Slider with dots and lines */}
-            <div className="relative flex flex-col items-center justify-center h-[160px] w-16">
-              {/* Pill */}
-              <div className="absolute left-1/2 top-0 -translate-x-1/2 w-8 h-[160px] bg-white/30 rounded-full" />
-              {/* Top dot and line */}
-              <div className="absolute left-1/2 top-[32px] -translate-x-1/2 flex items-center">
-                <div className="w-6 h-6 bg-white rounded-full z-10" />
-                <div className="h-0.5 w-[60px] bg-white ml-0.5" />
-              </div>
-              {/* Middle dot and line */}
-              <div className="absolute left-1/2 top-[96px] -translate-x-1/2 flex items-center">
-                <div className="w-6 h-6 bg-white rounded-full z-10" />
-                <div className="h-0.5 w-[60px] bg-white ml-0.5" />
-              </div>
-            </div>
-            {/* Right: Stats aligned with dots, spaced out */}
-            <div className="flex flex-col justify-between items-start flex-1 min-w-[220px] h-full pl-16 relative">
-              <div className="absolute left-0 top-[18px] flex flex-col items-start">
-                <span className="text-5xl font-light text-white leading-none mb-1">48</span>
-                <span className="text-xl text-white/90 font-medium leading-tight">Total equity investments</span>
-              </div>
-              <div className="absolute left-0 top-[82px] flex flex-col items-start">
-                <span className="text-5xl font-light text-white leading-none mb-1">264</span>
-                <span className="text-xl text-white/90 font-medium leading-tight">Total credit investments</span>
-              </div>
+          {/* 264 Card */}
+          <Card className="flex flex-col justify-start bg-[#F6B47B] rounded-xl border-0 p-6 min-h-[140px] shadow-sm">
+            <span className="text-4xl font-light text-white mb-2">264</span>
+            <span className="body-md text-white/90 font-medium">Total credit investments</span>
+            <span className="body-sm text-white/80 mt-1">Diversified portfolio across<br/>multiple sectors and regions</span>
+          </Card>
+          {/* 15+ Card */}
+          <Card className="flex flex-col justify-start bg-[#8B5C6B] rounded-xl border-0 p-6 min-h-[140px] shadow-sm relative overflow-hidden">
+            <div className="absolute right-0 top-0 w-20 h-20 bg-white/10 rounded-full -translate-y-10 translate-x-10"></div>
+            <div className="absolute left-0 top-[82px] flex flex-col items-start">
+              <span className="text-5xl font-light text-white leading-none mb-1">264</span>
+              <span className="text-xl text-white/90 font-medium leading-tight">Total credit investments</span>
             </div>
           </Card>
         </div>
@@ -267,7 +194,7 @@ export default function Home() {
                   <h3 className="text-lg font-bold text-primary">2025 Macquarie Conference Presentation</h3>
                   <span className="text-xs text-primary/60">30/04/2025</span>
                 </div>
-                <p className="text-sm text-primary/80 mb-4">Qualitas Limited (ASX: QAL) (Qualitas or Company) provides the attached copy of Qualitas' 2025 Macquarie Conference presentation being given today.<br />Authorised for release by the Group Managing Director.</p>
+                <p className="text-sm text-primary/80 mb-4">Qualitas Limited (ASX: QAL) (Qualitas or Company) provides the attached copy of Qualitas&apos; 2025 Macquarie Conference presentation being given today.<br />Authorised for release by the Group Managing Director.</p>
                 <button className="bg-primary text-white rounded-lg px-4 py-2 text-sm font-medium w-fit hover:bg-accent transition-colors mt-auto">Read more</button>
               </div>
             </div>

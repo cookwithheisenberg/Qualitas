@@ -1,243 +1,199 @@
 "use client";
 
 import { useState } from "react";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { HeroParallax } from "@/components/HeroParallax";
-import { Parallax } from "react-scroll-parallax";
+import { Card } from "@/components/ui/card";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 export default function Borrowers() {
-  const [selectedState, setSelectedState] = useState("All");
+  const [selectedState, setSelectedState] = useState<string>("All");
 
-  // Shuffled images from public folder
-  const images = [
+  // Available images from public folder
+  const availableImages = [
+    "/placeholder.avif",
     "/hero-placeholder.jpg",
     "/aboutus_banner.jpg",
-    "/Meet Our Team.jpg",
     "/Person 1.jpg",
     "/Person 2.jpg",
     "/Person 3.jpg",
-    "/placeholder.avif",
+    "/Meet Our Team.jpg",
   ];
 
+  // Helper function to get random image
+  const getRandomImage = () => {
+    return availableImages[Math.floor(Math.random() * availableImages.length)];
+  };
+
+  // Loan products data
   const loanProducts = [
     {
-      title: "Construction finance",
-      description: "Flexible funding for residential and commercial construction projects with progressive drawdowns and competitive terms.",
-      icon: (
-        <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
-          <path d="M3 21h18M3 7h18M3 3h18M7 21V7M17 21V7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
-      ),
+      id: 1,
+      title: "Construction Finance",
+      description: "Flexible construction financing solutions for residential and commercial projects.",
+      image: getRandomImage(),
+      features: ["Up to 80% LVR", "Interest-only during construction", "Flexible drawdowns"]
     },
     {
-      title: "Investment loans",
-      description: "Tailored financing for commercial and residential investment properties with flexible structures and competitive rates.",
-      icon: (
-        <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
-          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
-      ),
+      id: 2,
+      title: "Development Finance",
+      description: "Comprehensive development funding for large-scale residential projects.",
+      image: getRandomImage(),
+      features: ["Up to 75% LVR", "Project-based funding", "Expert guidance"]
     },
     {
-      title: "Bridging finance",
-      description: "Short-term funding solutions for time-sensitive opportunities, refinancing, and settlement bridging requirements.",
-      icon: (
-        <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
-          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
-      ),
-    },
-    {
-      title: "Development finance",
-      description: "Comprehensive funding for large-scale residential and commercial development projects with staged release structures.",
-      icon: (
-        <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
-          <path d="M3 21h18M3 7h18M3 3h18M7 21V7M17 21V7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
-      ),
-    },
-    {
-      title: "Acquisition finance",
-      description: "Fast-track funding for property acquisitions with competitive terms and streamlined approval processes.",
-      icon: (
-        <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
-          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
-      ),
-    },
-    {
-      title: "Refinancing",
-      description: "Refinancing solutions to optimize existing debt structures, unlock equity, and improve cash flow positions.",
-      icon: (
-        <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
-          <path d="M3 21h18M3 7h18M3 3h18M7 21V7M17 21V7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
-      ),
-    },
+      id: 3,
+      title: "Bridge Finance",
+      description: "Short-term bridging solutions for property acquisition and refinancing.",
+      image: getRandomImage(),
+      features: ["Quick approval", "Flexible terms", "Competitive rates"]
+    }
   ];
 
+  // Case studies data
   const caseStudies = [
     {
-      state: "NSW",
-      title: "Sunny heights: A case study in urban living",
-      subheading: "$45M - $250M",
-      description: "A $250m senior debt facility helped to fund construction of West End, a development comprising 377 residential apartments across two towers in Sydney's inner west.",
-      image: images[0],
+      id: 1,
+      title: "Sustainable Residential Development",
+      description: "A 200-unit sustainable residential project in Melbourne's inner suburbs.",
+      image: getRandomImage(),
+      category: "Residential"
     },
     {
-      state: "QLD",
-      title: "Brisbane waterfront: Luxury living redefined",
-      subheading: "$30M - $180M",
-      description: "A $180m development finance facility supported the construction of premium waterfront apartments in Brisbane's fastest-growing precinct.",
-      image: images[1],
+      id: 2,
+      title: "Mixed-Use Commercial Project",
+      description: "Innovative mixed-use development combining retail and office spaces.",
+      image: getRandomImage(),
+      category: "Commercial"
     },
     {
-      state: "VIC",
-      title: "Melbourne central: Mixed-use excellence",
-      subheading: "$60M - $320M",
-      description: "A $320m construction finance facility enabled the development of a mixed-use precinct combining residential, retail, and commercial spaces.",
-      image: images[2],
-    },
-    {
-      state: "WA",
-      title: "Perth innovation: Sustainable development",
-      subheading: "$25M - $150M",
-      description: "A $150m investment loan supported the development of Perth's first carbon-neutral residential community with integrated smart technology.",
-      image: images[3],
-    },
+      id: 3,
+      title: "Infrastructure Investment",
+      description: "Large-scale infrastructure project supporting regional development.",
+      image: getRandomImage(),
+      category: "Infrastructure"
+    }
   ];
 
+  // Team members data
   const teamMembers = [
     {
-      name: "Alex Morgan",
+      id: 1,
+      name: "Sarah Johnson",
       title: "Senior Lending Manager",
+      image: "/Person 1.jpg",
       state: "NSW",
-      bio: "Alex brings 20+ years of experience in real estate credit investing, with a track record in loan origination, portfolio management, and risk oversight across Australia's property markets.",
-      image: images[4],
+      description: "Sarah leads our NSW lending team with over 15 years of experience in commercial finance."
     },
     {
-      name: "George",
-      title: "Senior Lending Specialist",
+      id: 2,
+      name: "Michael Chen",
+      title: "Development Finance Specialist",
+      image: "/Person 2.jpg",
       state: "VIC",
-      bio: "George specializes in complex financing structures and has extensive experience in development finance, working with clients across Victoria's most dynamic property markets.",
-      image: images[5],
+      description: "Michael specializes in development finance with expertise in large-scale residential projects."
     },
     {
-      name: "James Wilson",
-      title: "Senior Lending Specialist",
+      id: 3,
+      name: "Emma Rodriguez",
+      title: "Construction Finance Manager",
+      image: "/Person 3.jpg",
       state: "QLD",
-      bio: "James leads our Queensland lending operations with deep expertise in construction finance and investment property financing across the state's growing markets.",
-      image: images[6],
+      description: "Emma manages construction finance across Queensland with deep industry knowledge."
     },
+    {
+      id: 4,
+      name: "David Thompson",
+      title: "Bridge Finance Specialist",
+      image: "/Person 1.jpg",
+      state: "WA",
+      description: "David provides bridge finance solutions with quick turnaround times and flexible terms."
+    },
+    {
+      id: 5,
+      name: "Lisa Wang",
+      title: "Senior Credit Analyst",
+      image: "/Person 2.jpg",
+      state: "SA",
+      description: "Lisa conducts thorough credit analysis ensuring robust risk management across all deals."
+    },
+    {
+      id: 6,
+      name: "James Wilson",
+      title: "Lending Operations Manager",
+      image: "/Person 3.jpg",
+      state: "TAS",
+      description: "James oversees lending operations with focus on efficiency and customer service excellence."
+    }
   ];
 
-  // Team member card component (copied from Our Team page)
-  function TeamMemberCard({ name, title, image, description, linkedin }: { name: string; title: string; image: string; description: string; linkedin: string }) {
-    return (
-      <div className="relative group w-full h-[28rem] md:h-[33rem] flex flex-col items-center justify-end overflow-hidden rounded-xl shadow-sm border border-primary/10 bg-white">
-        <img
-          src={image}
-          alt={name}
-          className="object-cover w-full h-full absolute inset-0 z-0 transition-transform duration-300 group-hover:scale-105"
-        />
-        {/* Overlay on hover */}
-        <div className="absolute inset-0 z-10 bg-[#0A2342]/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-end justify-end p-0 text-white pointer-events-none">
-          <div className="w-full flex flex-col items-start px-5 pb-24 gap-2 pointer-events-auto">
-            <a
-              href={linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block border border-white bg-transparent text-white font-medium rounded-lg px-5 py-2 text-sm hover:bg-white/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-              tabIndex={0}
-              aria-label={`View ${name}'s LinkedIn`}
-            >
-              View LinkedIn
-            </a>
-            <div className="text-base opacity-90 text-left max-w-xs">
-              {description}
-            </div>
-          </div>
-        </div>
-        {/* Name and title inside image, left-aligned at bottom */}
-        <div className="absolute left-0 bottom-0 z-20 w-full px-5 pb-4 pt-8 flex flex-col items-start bg-gradient-to-t from-black/60 via-black/0 to-transparent">
-          <div className="text-base md:text-xl font-semibold text-white drop-shadow-md mb-0">{name}</div>
-          <div className="text-sm md:text-lg text-white/80 drop-shadow mb-1">{title}</div>
-        </div>
-      </div>
-    );
-  }
+  // Filter team members by state
+  const filteredTeamMembers = selectedState === "All" 
+    ? teamMembers 
+    : teamMembers.filter(member => member.state === selectedState);
 
   return (
-    <div className="min-h-screen flex flex-col bg-white overflow-x-hidden">
+    <main className="w-full min-h-screen bg-white">
       {/* Hero Section */}
-      <HeroParallax 
-        heading="Flexible funding to take you to the next level"
-        body="As a leading alternative lender, we help your vision become reality with finance that's fast, flexible and more personalised."
-        imageSrc={images[0]}
-        overlay={true}
-      />
+      <section className="w-full max-w-screen-2xl mx-auto flex flex-col md:flex-row items-start justify-between pt-16 md:pt-24 pb-8 md:pb-16 gap-8 md:gap-0 px-4 md:px-8">
+        {/* Left: Label */}
+        <div className="flex-1 flex flex-col items-start justify-start">
+          <span className="label-md mb-2 md:mb-0 mt-2 md:mt-4">Borrowers</span>
+        </div>
+        {/* Right: Large Heading */}
+        <div className="flex-[2] flex flex-col items-end justify-start">
+          <h1 className="headline-lg text-primary text-right leading-tight max-w-2xl">
+            Flexible financing solutions for <span className="font-semibold underline decoration-accent/60 decoration-2 underline-offset-4">real estate</span> professionals.
+          </h1>
+        </div>
+      </section>
 
-      {/* Loan Products and Services Section */}
-      <section className="w-full flex justify-center bg-white py-8 md:py-12 mt-14 md:mt-[120px]">
-        <Parallax speed={-5} className="absolute inset-0 w-full h-full z-0" />
-        <div className="w-full max-w-screen-2xl px-4 md:px-8 relative z-10">
-          <h2 className="title-md mb-8">Loan products and services</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {loanProducts.map((product, index) => (
-              <Card key={index} className="flex flex-col items-start p-6 rounded-xl shadow-sm h-full transition-transform transition-shadow transition-colors duration-300 cursor-pointer hover:scale-[1.01] hover:shadow-md hover:border-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent" tabIndex={0}>
-                <div className="text-accent mb-4">
-                  {product.icon}
-                </div>
-                <h3 className="text-xl font-semibold text-primary mb-2">{product.title}</h3>
-                <p className="body-md text-primary/80">{product.description}</p>
-              </Card>
-            ))}
-          </div>
+      {/* Loan Products Section */}
+      <section className="w-full max-w-screen-2xl mx-auto mt-20 md:mt-[80px] pb-8 md:pb-12 px-4 md:px-8">
+        <div className="flex items-center justify-between mb-8">
+          <h2 className="title-md">Our Loan Products</h2>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {loanProducts.map((product) => (
+            <Card key={product.id} className="flex flex-col transition-transform transition-shadow transition-colors duration-300 cursor-pointer hover:scale-[1.01] hover:shadow-md hover:border-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent" tabIndex={0}>
+              <div className="relative rounded-t-xl overflow-hidden bg-gray-200 aspect-[16/9] border-b border-primary/20">
+                <img src={product.image} alt={product.title} className="w-full h-full object-cover" />
+              </div>
+              <div className="p-6 flex flex-col flex-1">
+                <h3 className="text-xl font-semibold text-primary mb-3">{product.title}</h3>
+                <p className="body-md text-primary/80 mb-4 flex-1">{product.description}</p>
+                <ul className="space-y-2">
+                  {product.features.map((feature, index) => (
+                    <li key={index} className="flex items-center gap-2">
+                      <div className="w-2 h-2 bg-accent rounded-full"></div>
+                      <span className="body-sm text-primary/70">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </Card>
+          ))}
         </div>
       </section>
 
       {/* Case Studies Section */}
-      <section className="w-full flex justify-center bg-white py-0 mt-14 md:mt-[120px]">
-        <Parallax speed={-5} className="absolute inset-0 w-full h-full z-0" />
-        <div className="w-full max-w-screen-2xl px-4 md:px-8 relative z-10">
-          <div className="flex items-center justify-between mb-8">
-            <h2 className="title-md">Case studies</h2>
-            <div className="flex items-center gap-2">
-              <label htmlFor="state-filter" className="body-sm font-medium text-primary">State:</label>
-              <select
-                id="state-filter"
-                value={selectedState}
-                onChange={(e) => setSelectedState(e.target.value)}
-                className="border border-primary/30 rounded-lg px-3 py-1 body-sm bg-white focus:outline-none focus:ring-2 focus:ring-accent"
-              >
-                <option value="All">All</option>
-                <option value="NSW">NSW</option>
-                <option value="QLD">QLD</option>
-                <option value="VIC">VIC</option>
-                <option value="WA">WA</option>
-              </select>
-            </div>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {caseStudies
-              .filter(study => selectedState === "All" || study.state === selectedState)
-              .map((study, index) => (
-                <Card key={index} className="flex flex-col rounded-xl shadow-sm overflow-hidden transition-transform transition-shadow transition-colors duration-300 cursor-pointer hover:scale-[1.01] hover:shadow-md hover:border-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent p-0" tabIndex={0}>
-                  <div className="relative aspect-[16/9] w-full rounded-t-xl overflow-hidden flex-shrink-0">
-                    <img src={study.image} alt={study.title} className="w-full h-full object-cover" />
-                    <div className="absolute top-3 left-3 bg-accent text-white text-xs font-medium px-2 py-1 rounded">
-                      {study.state}
-                    </div>
-                  </div>
-                  <CardContent className="p-6 flex flex-col flex-1">
-                    <h3 className="text-lg font-semibold text-primary mb-2">{study.title}</h3>
-                    <p className="text-sm font-medium text-accent mb-2">{study.subheading}</p>
-                    <p className="text-sm text-primary/80 flex-1">{study.description}</p>
-                  </CardContent>
-                </Card>
-              ))}
-          </div>
+      <section className="w-full max-w-screen-2xl mx-auto mt-20 md:mt-[80px] pb-8 md:pb-12 px-4 md:px-8">
+        <div className="flex items-center justify-between mb-8">
+          <h2 className="title-md">Case Studies</h2>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {caseStudies.map((study) => (
+            <Card key={study.id} className="flex flex-col transition-transform transition-shadow transition-colors duration-300 cursor-pointer hover:scale-[1.01] hover:shadow-md hover:border-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent" tabIndex={0}>
+              <div className="relative rounded-t-xl overflow-hidden bg-gray-200 aspect-[16/9] border-b border-primary/20">
+                <img src={study.image} alt={study.title} className="w-full h-full object-cover" />
+                <div className="absolute top-3 left-3 bg-primary text-white text-xs font-semibold px-3 py-1 rounded-lg">
+                  {study.category}
+                </div>
+              </div>
+              <div className="p-6 flex flex-col flex-1">
+                <h3 className="text-lg font-semibold text-primary mb-2">{study.title}</h3>
+                <p className="body-md text-primary/80">{study.description}</p>
+              </div>
+            </Card>
+          ))}
         </div>
       </section>
 
@@ -246,37 +202,57 @@ export default function Borrowers() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           {/* Section Title & Paragraph */}
           <div className="flex flex-col items-start justify-start border-t border-primary/20 pt-6 md:col-span-1 mb-6 md:mb-0">
-            <span className="text-xs font-semibold uppercase tracking-widest text-primary mb-4">Meet the lending team</span>
+            <span className="label-md mb-4">Meet the Lending Team</span>
             <p className="body-md text-primary/80">
-              Our lending team brings decades of experience in real estate credit, development, and investment. With deep market knowledge and a commitment to client success, they deliver tailored funding solutions and expert guidance for every project.
+              Our experienced lending team provides personalized service and expert guidance throughout your financing journey. With deep market knowledge and strong relationships, we ensure you get the best possible terms for your project.
             </p>
           </div>
-          {/* Team Member 1 */}
-          <TeamMemberCard
-            name="Alex Morgan"
-            title="Senior Lending Manager"
-            image={images[4]}
-            description="Alex brings 20+ years of experience in real estate credit investing, with a track record in loan origination, portfolio management, and risk oversight across Australia's property markets."
-            linkedin="#"
-          />
-          {/* Team Member 2 */}
-          <TeamMemberCard
-            name="George"
-            title="Senior Lending Specialist"
-            image={images[5]}
-            description="George specializes in complex financing structures and has extensive experience in development finance, working with clients across Victoria's most dynamic property markets."
-            linkedin="#"
-          />
-          {/* Team Member 3 */}
-          <TeamMemberCard
-            name="James Wilson"
-            title="Senior Lending Specialist"
-            image={images[6]}
-            description="James leads our Queensland lending operations with deep expertise in construction finance and investment property financing across the state's growing markets."
-            linkedin="#"
-          />
+          
+          {/* Team Members Grid */}
+          <div className="md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6">
+            {filteredTeamMembers.map((member) => (
+              <TeamMemberCard key={member.id} {...member} />
+            ))}
+          </div>
         </div>
       </section>
+    </main>
+  );
+}
+
+function TeamMemberCard({ 
+  name, 
+  title, 
+  image, 
+  state,
+  description 
+}: {
+  name: string;
+  title: string;
+  image: string;
+  state: string;
+  description: string;
+}) {
+  return (
+    <div className="bg-white rounded-2xl border border-primary/30 flex flex-col overflow-hidden transition-transform transition-shadow transition-colors duration-300 cursor-pointer hover:scale-[1.01] hover:shadow-md hover:border-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent group" tabIndex={0}>
+      <div className="relative overflow-hidden bg-gray-200 aspect-[4/3]">
+        <img src={image} alt={name} className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" />
+        {/* Overlay on hover */}
+        <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+          <div className="text-center text-white p-4">
+            <p className="text-sm leading-relaxed">{description}</p>
+          </div>
+        </div>
+      </div>
+      <div className="p-6 flex flex-col flex-1">
+        <div className="flex items-center justify-between mb-2">
+          <h3 className="text-lg font-semibold text-primary">{name}</h3>
+          <span className="bg-primary/10 text-primary text-xs font-semibold px-2 py-1 rounded-lg">
+            {state}
+          </span>
+        </div>
+        <p className="text-sm text-primary/70">{title}</p>
+      </div>
     </div>
   );
 } 

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { caseStudies, getCaseStudiesByCategory, getRecentCaseStudies } from "@/lib/caseStudies";
+import { getCaseStudiesByCategory, getRecentCaseStudies } from "@/lib/caseStudies";
 
 export default function NewsInsights() {
   const [selectedFilter, setSelectedFilter] = useState<string>("All");

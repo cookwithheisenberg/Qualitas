@@ -1,11 +1,11 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { getCaseStudyBySlug, caseStudies } from "@/lib/caseStudies";
+import { getCaseStudyBySlug, caseStudies, CaseStudy } from "@/lib/caseStudies";
 
 export default function CaseStudyDetail({ params }: { params: Promise<{ slug: string }> }) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [caseStudy, setCaseStudy] = useState<any>(null);
+  const [caseStudy, setCaseStudy] = useState<CaseStudy | null>(null);
   const [loading, setLoading] = useState(true);
 
   // Get case study data when component mounts
@@ -13,7 +13,7 @@ export default function CaseStudyDetail({ params }: { params: Promise<{ slug: st
     const loadCaseStudy = async () => {
       const resolvedParams = await params;
       const study = getCaseStudyBySlug(resolvedParams.slug);
-      setCaseStudy(study);
+      setCaseStudy(study || null);
       setLoading(false);
     };
     loadCaseStudy();
@@ -267,7 +267,7 @@ export default function CaseStudyDetail({ params }: { params: Promise<{ slug: st
               <h2 className="title-md mb-6">Conclusion</h2>
               <div className="prose prose-lg max-w-none">
                 <p className="body-lg text-primary/80 leading-relaxed mb-4">
-                  The implementation of sustainable residential building practices represents a critical step forward in addressing Australia's housing crisis. Through strategic investment, innovative design, and collaborative partnerships, we can create housing solutions that benefit both investors and communities.
+                  The implementation of sustainable residential building practices represents a critical step forward in addressing Australia&apos;s housing crisis. Through strategic investment, innovative design, and collaborative partnerships, we can create housing solutions that benefit both investors and communities.
                 </p>
                 <p className="body-lg text-primary/80 leading-relaxed">
                   The success of these initiatives depends on continued commitment to sustainable practices, ongoing stakeholder engagement, and adaptive strategies that respond to evolving market conditions and community needs.
