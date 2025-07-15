@@ -38,7 +38,7 @@ export default function CaseStudyDetail({ params }: { params: Promise<{ slug: st
       title: study.title,
       image: study.image,
       slug: study.slug,
-    }));
+  }));
 
   const nextImage = () => {
     setCurrentImageIndex((prev) => (prev + 1) % caseStudy.carouselImages.length);
@@ -65,30 +65,30 @@ export default function CaseStudyDetail({ params }: { params: Promise<{ slug: st
         
         {/* Content */}
         <div className="relative z-20 w-full max-w-screen-2xl mx-auto px-4 md:px-8 py-16 md:py-24">
-          <div className="max-w-4xl">
-            {/* Breadcrumb */}
+        <div className="max-w-4xl">
+          {/* Breadcrumb */}
             <nav className="flex items-center gap-2 text-sm text-white/80 mb-6">
               <a href="/news-insights" className="hover:text-white transition-colors">News & Insights</a>
-              <span>•</span>
-              <span>Case Study</span>
-            </nav>
-            
+            <span>•</span>
+            <span>Case Study</span>
+          </nav>
+          
             {/* Meta data and tags */}
-            <div className="flex flex-wrap items-center gap-4 mb-6">
+          <div className="flex flex-wrap items-center gap-4 mb-6">
               <span className="bg-primary text-white text-xs font-semibold px-3 py-1 rounded-lg">{caseStudy.category}</span>
               <span className="text-sm text-white/80">{caseStudy.date}</span>
               <span className="text-sm text-white/80">•</span>
               <span className="text-sm text-white/80">{caseStudy.readTime}</span>
               <span className="text-sm text-white/80">•</span>
               <span className="text-sm text-white/80">By {caseStudy.author}</span>
-            </div>
+          </div>
 
-            {/* Title */}
+          {/* Title */}
             <h1 className="text-3xl md:text-5xl lg:text-6xl font-light text-white leading-tight mb-6">
               {caseStudy.title}
-            </h1>
+          </h1>
 
-            {/* Description */}
+          {/* Description */}
             <p className="text-lg md:text-xl text-white/90 leading-relaxed mb-8 max-w-3xl">
               {caseStudy.description}
             </p>
@@ -365,18 +365,18 @@ function RelatedInsightCard({
 }) {
   return (
     <a href={`/case-study/${slug}`} className="block">
-      <div className="bg-white rounded-2xl border border-primary/30 flex flex-col transition-transform transition-shadow transition-colors duration-300 cursor-pointer hover:scale-[1.01] hover:shadow-md hover:border-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent" tabIndex={0}>
-        <div className="relative rounded-t-2xl overflow-hidden bg-gray-200 aspect-[16/9] border-b border-primary/20">
-          <img src={image} alt={title} className="w-full h-full object-cover" />
-          <div className="absolute top-3 left-3 bg-primary text-white text-xs font-semibold px-3 py-1 rounded-lg">
+    <div className="bg-white rounded-2xl border border-primary/30 flex flex-col transition-transform transition-shadow transition-colors duration-300 cursor-pointer hover:scale-[1.01] hover:shadow-md hover:border-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent" tabIndex={0}>
+      <div className="relative rounded-t-2xl overflow-hidden bg-gray-200 aspect-[16/9] border-b border-primary/20">
+        <img src={image} alt={title} className="w-full h-full object-cover" />
+        <div className="absolute top-3 left-3 bg-primary text-white text-xs font-semibold px-3 py-1 rounded-lg">
             {category}
-          </div>
-        </div>
-        <div className="p-6 flex flex-col flex-1">
-          <span className="text-xs font-semibold text-primary/60 mb-2 uppercase tracking-wide">{category}</span>
-          <h3 className="text-lg font-bold text-primary">{title}</h3>
         </div>
       </div>
+      <div className="p-6 flex flex-col flex-1">
+        <span className="text-xs font-semibold text-primary/60 mb-2 uppercase tracking-wide">{category}</span>
+        <h3 className="text-lg font-bold text-primary">{title}</h3>
+      </div>
+    </div>
     </a>
   );
 } 

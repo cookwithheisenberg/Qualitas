@@ -51,9 +51,9 @@ export default function Home() {
           {/* 15+ Card */}
           <Card className="flex flex-col justify-start bg-[#8B5C6B] rounded-xl border-0 p-6 min-h-[140px] shadow-sm relative overflow-hidden">
             <div className="absolute right-0 top-0 w-20 h-20 bg-white/10 rounded-full -translate-y-10 translate-x-10"></div>
-            <div className="absolute left-0 top-[82px] flex flex-col items-start">
-              <span className="text-5xl font-light text-white leading-none mb-1">264</span>
-              <span className="text-xl text-white/90 font-medium leading-tight">Total credit investments</span>
+              <div className="absolute left-0 top-[82px] flex flex-col items-start">
+                <span className="text-5xl font-light text-white leading-none mb-1">264</span>
+                <span className="text-xl text-white/90 font-medium leading-tight">Total credit investments</span>
             </div>
           </Card>
         </div>
@@ -92,35 +92,35 @@ export default function Home() {
           {(() => {
             const featuredCaseStudy = getRecentCaseStudies(1)[0];
             return (
-              <div className="bg-[#F5F7FA] rounded-3xl flex flex-col md:flex-row items-stretch p-8 md:p-16 gap-8 md:gap-12 border border-primary/30">
-                {/* Left: Text */}
-                <div className="flex-1 flex flex-col justify-center">
+          <div className="bg-[#F5F7FA] rounded-3xl flex flex-col md:flex-row items-stretch p-8 md:p-16 gap-8 md:gap-12 border border-primary/30">
+            {/* Left: Text */}
+            <div className="flex-1 flex flex-col justify-center">
                   <span className="text-base font-medium text-primary/70 mb-4">{featuredCaseStudy.category.toUpperCase()}</span>
                   <h2 className="text-4xl md:text-5xl font-light text-primary mb-6 max-w-2xl">{featuredCaseStudy.title}</h2>
                   <p className="text-lg font-semibold text-primary mb-2">{featuredCaseStudy.description.split('.')[0]}.</p>
                   <p className="text-base text-primary/80 mb-8 max-w-xl">{featuredCaseStudy.description.split('.')[1]}.</p>
                   <a href={`/case-study/${featuredCaseStudy.slug}`} className="bg-primary text-white rounded-lg px-6 py-3 text-base font-medium w-fit hover:bg-accent transition-colors">Read more</a>
-                </div>
-                {/* Right: Bento Image Grid */}
-                <div className="flex-1 grid grid-cols-3 grid-rows-2 gap-4 min-w-[320px] max-w-lg">
-                  {/* Top left: small */}
-                  <div className="rounded-2xl overflow-hidden bg-gray-200 col-span-1 row-span-1 aspect-square">
+            </div>
+            {/* Right: Bento Image Grid */}
+            <div className="flex-1 grid grid-cols-3 grid-rows-2 gap-4 min-w-[320px] max-w-lg">
+              {/* Top left: small */}
+              <div className="rounded-2xl overflow-hidden bg-gray-200 col-span-1 row-span-1 aspect-square">
                     <img src={featuredCaseStudy.carouselImages[0]} alt="Project image 1" className="w-full h-full object-cover" />
-                  </div>
-                  {/* Top right: tall */}
-                  <div className="rounded-2xl overflow-hidden bg-gray-200 col-span-2 row-span-1 aspect-[2/1]">
-                    <img src={featuredCaseStudy.carouselImages[1]} alt="Project image 2" className="w-full h-full object-cover" />
-                  </div>
-                  {/* Bottom left */}
-                  <div className="rounded-2xl overflow-hidden bg-gray-200 col-span-1 row-span-1 aspect-square">
-                    <img src={featuredCaseStudy.carouselImages[2]} alt="Project image 3" className="w-full h-full object-cover" />
-                  </div>
-                  {/* Bottom right */}
-                  <div className="rounded-2xl overflow-hidden bg-gray-200 col-span-2 row-span-1 aspect-[2/1]">
-                    <img src={featuredCaseStudy.carouselImages[3]} alt="Project image 4" className="w-full h-full object-cover" />
-                  </div>
-                </div>
               </div>
+              {/* Top right: tall */}
+              <div className="rounded-2xl overflow-hidden bg-gray-200 col-span-2 row-span-1 aspect-[2/1]">
+                    <img src={featuredCaseStudy.carouselImages[1]} alt="Project image 2" className="w-full h-full object-cover" />
+              </div>
+              {/* Bottom left */}
+              <div className="rounded-2xl overflow-hidden bg-gray-200 col-span-1 row-span-1 aspect-square">
+                    <img src={featuredCaseStudy.carouselImages[2]} alt="Project image 3" className="w-full h-full object-cover" />
+              </div>
+              {/* Bottom right */}
+              <div className="rounded-2xl overflow-hidden bg-gray-200 col-span-2 row-span-1 aspect-[2/1]">
+                    <img src={featuredCaseStudy.carouselImages[3]} alt="Project image 4" className="w-full h-full object-cover" />
+              </div>
+            </div>
+          </div>
             );
           })()}
         </div>
