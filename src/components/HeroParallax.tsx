@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { Parallax } from "react-scroll-parallax";
+import { useState } from "react";
 
 export function HeroParallax({
   heading = "Experts in real\nestate investment\nmanagement",
@@ -13,15 +14,22 @@ export function HeroParallax({
   imageSrc?: string;
   overlay?: boolean;
 }) {
+  const [imageError, setImageError] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
+
   return (
     <section className="relative w-full min-h-screen flex items-start justify-start overflow-hidden bg-white">
       <Parallax speed={-20} className="absolute inset-0 w-full h-full z-0">
         <Image
-          src={imageSrc}
+          src={imageError ? "/hero-placeholder.jpg" : imageSrc}
           alt="Hero background"
           fill
           style={{ objectFit: "cover" }}
           priority
+          onError={() => setImageError(true)}
+          onLoad={() => setImageLoaded(true)}
+          sizes="100vw"
+          className={`transition-opacity duration-500 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
         />
       </Parallax>
       {/* Overlay for text visibility */}
